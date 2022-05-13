@@ -1,0 +1,8 @@
+<script>
+    async function LoadModule(url) { return await import(url); }
+</script>
+<script>
+    var mode = "{{ mode }}";
+</script>
+<app-root>Loading...</app-root>
+{{{ loadScripts }}}

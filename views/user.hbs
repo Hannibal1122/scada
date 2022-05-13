@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="ru">
+    <head>
+        {{> head }}
+    </head>
+    <body>
+        <form>
+            <input type = "text" id = "login" value = "john">
+            <input type = "password" id = "pass" value = "changeme">
+        </form>
+        <button id = "submit">Создать</button>
+        <script>
+            var login = document.getElementById("login");
+            var pass = document.getElementById("pass");
+            var button = document.getElementById("submit");
+            //{"username": "john", "password": "changeme"}
+            button.onclick = function()
+            {
+                fetch('users/create', {
+                    method: 'POST', // *GET, POST, PUT, DELETE, etc.
+                    mode: 'cors', // no-cors, *cors, same-origin
+                    cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+                    credentials: 'same-origin', // include, *same-origin, omit
+                    headers: { "Content-Type": "application/json" },
+                    redirect: 'follow', // manual, *follow, error
+                    referrerPolicy: 'no-referrer', // no-referrer, *client
+                    body: JSON.stringify({ login: login.value, password: pass.value, firstName: "FUCK", lastName: "YOU!" }) // body data type must match "Content-Type" header
+                }).then((res) => {
+                    res.json().then(access => {
+                        console.log(access)
+                        localStorage.setItem("token", access.access_token)
+                    })
+                });
+            }
+        </script>
+    </body>
+</html>

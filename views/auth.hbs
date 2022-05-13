@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="ru">
+    <head>
+        {{> head }}
+    </head>
+    <body>
+        <form>
+            <input type = "text" id = "login" value = "john">
+            <input type = "password" id = "pass" value = "changeme">
+        </form>
+        <button id = "submit">Войти</button>
+        <button id = "test">test</button>
+        <script>
+            var login = document.getElementById("login");
+            var pass = document.getElementById("pass");
+            var button = document.getElementById("submit");
+            var test = document.getElementById("test");
+            //{"username": "john", "password": "changeme"}
+            button.onclick = function()
+            {
+                fetch('auth/login', {
+                    method: 'POST', // *GET, POST, PUT, DELETE, etc.
+                    mode: 'cors', // no-cors, *cors, same-origin
+                    cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+                    credentials: 'same-origin', // include, *same-origin, omit
+                    headers: { "Content-Type": "application/json" },
+                    redirect: 'follow', // manual, *follow, error
+                    referrerPolicy: 'no-referrer', // no-referrer, *client
+                    body: JSON.stringify({ username: login.value, password: pass.value }) // body data type must match "Content-Type" header
+                }).then((res) => {
+                    res.json().then(access => {
+                        console.log(access)
+                        localStorage.setItem("token", access.access_token)
+                    })
+                });
+            }
+            test.onclick = function()
+            {
+                fetch('profile', {
+                    method: 'GET', // *GET, POST, PUT, DELETE, etc.
+                    mode: 'cors', // no-cors, *cors, same-origin
+                    cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+                    credentials: 'same-origin', // include, *same-origin, omit
+                    headers: { "Content-Type": "application/json", "Authorization": `Bearer ${ localStorage.getItem("token") }`},
+                    redirect: 'follow', // manual, *follow, error
+                    referrerPolicy: 'no-referrer', // no-referrer, *client
+                }).then((res) => {
+                    
+                });
+            }
+        </script>
+    </body>
+</html>
