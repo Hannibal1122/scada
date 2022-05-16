@@ -9,7 +9,7 @@ export class Registry {
     value: string;
 
     @Column({ type: 'timestamp' })
-    dateCreated: Date;
+    dateCreated: number;
 
     @Column({ default: true })
     isDeleted: boolean;

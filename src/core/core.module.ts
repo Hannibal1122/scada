@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { WebpackLoader } from '../middleware/webpack.middleware';
 import { CoreController } from './core.controller';
 import { CoreService } from './core.service';
 import { Links } from './entity/links.entity';
@@ -21,6 +22,6 @@ import { Scheme } from './entity/scheme.entity';
         }),
     ],
     controllers: [CoreController],
-    providers: [CoreService]
+    providers: [CoreService, WebpackLoader]
 })
 export class CoreModule {}

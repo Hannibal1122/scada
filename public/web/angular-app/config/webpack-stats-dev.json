@@ -1,0 +1,92 @@
+{
+  "status": "done",
+  "assets": {
+    "main-6035d959d7e155a450c2.js": {
+      "name": "main-6035d959d7e155a450c2.js",
+      "path": "/Users/mikhail/Projects/scada/public/web/angular-app/bundles/main-6035d959d7e155a450c2.js",
+      "publicPath": "http://localhost:4002/assets/bundles/main-6035d959d7e155a450c2.js"
+    },
+    "polyfills-6035d959d7e155a450c2.js": {
+      "name": "polyfills-6035d959d7e155a450c2.js",
+      "path": "/Users/mikhail/Projects/scada/public/web/angular-app/bundles/polyfills-6035d959d7e155a450c2.js",
+      "publicPath": "http://localhost:4002/assets/bundles/polyfills-6035d959d7e155a450c2.js"
+    },
+    "styles.css": {
+      "name": "styles.css",
+      "path": "/Users/mikhail/Projects/scada/public/web/angular-app/bundles/styles.css",
+      "publicPath": "http://localhost:4002/assets/bundles/styles.css"
+    },
+    "styles-6035d959d7e155a450c2.js": {
+      "name": "styles-6035d959d7e155a450c2.js",
+      "path": "/Users/mikhail/Projects/scada/public/web/angular-app/bundles/styles-6035d959d7e155a450c2.js",
+      "publicPath": "http://localhost:4002/assets/bundles/styles-6035d959d7e155a450c2.js"
+    },
+    "runtime-6035d959d7e155a450c2.js": {
+      "name": "runtime-6035d959d7e155a450c2.js",
+      "path": "/Users/mikhail/Projects/scada/public/web/angular-app/bundles/runtime-6035d959d7e155a450c2.js",
+      "publicPath": "http://localhost:4002/assets/bundles/runtime-6035d959d7e155a450c2.js"
+    },
+    "vendor-6035d959d7e155a450c2.js": {
+      "name": "vendor-6035d959d7e155a450c2.js",
+      "path": "/Users/mikhail/Projects/scada/public/web/angular-app/bundles/vendor-6035d959d7e155a450c2.js",
+      "publicPath": "http://localhost:4002/assets/bundles/vendor-6035d959d7e155a450c2.js"
+    },
+    "favicon.ico": {
+      "name": "favicon.ico",
+      "path": "/Users/mikhail/Projects/scada/public/web/angular-app/bundles/favicon.ico",
+      "publicPath": "http://localhost:4002/assets/bundles/favicon.ico"
+    },
+    "index.html": {
+      "name": "index.html",
+      "path": "/Users/mikhail/Projects/scada/public/web/angular-app/bundles/index.html",
+      "publicPath": "http://localhost:4002/assets/bundles/index.html"
+    },
+    "main-6035d959d7e155a450c2.js.map": {
+      "name": "main-6035d959d7e155a450c2.js.map",
+      "path": "/Users/mikhail/Projects/scada/public/web/angular-app/bundles/main-6035d959d7e155a450c2.js.map",
+      "publicPath": "http://localhost:4002/assets/bundles/main-6035d959d7e155a450c2.js.map"
+    },
+    "polyfills-6035d959d7e155a450c2.js.map": {
+      "name": "polyfills-6035d959d7e155a450c2.js.map",
+      "path": "/Users/mikhail/Projects/scada/public/web/angular-app/bundles/polyfills-6035d959d7e155a450c2.js.map",
+      "publicPath": "http://localhost:4002/assets/bundles/polyfills-6035d959d7e155a450c2.js.map"
+    },
+    "styles.css.map": {
+      "name": "styles.css.map",
+      "path": "/Users/mikhail/Projects/scada/public/web/angular-app/bundles/styles.css.map",
+      "publicPath": "http://localhost:4002/assets/bundles/styles.css.map"
+    },
+    "styles-6035d959d7e155a450c2.js.map": {
+      "name": "styles-6035d959d7e155a450c2.js.map",
+      "path": "/Users/mikhail/Projects/scada/public/web/angular-app/bundles/styles-6035d959d7e155a450c2.js.map",
+      "publicPath": "http://localhost:4002/assets/bundles/styles-6035d959d7e155a450c2.js.map"
+    },
+    "runtime-6035d959d7e155a450c2.js.map": {
+      "name": "runtime-6035d959d7e155a450c2.js.map",
+      "path": "/Users/mikhail/Projects/scada/public/web/angular-app/bundles/runtime-6035d959d7e155a450c2.js.map",
+      "publicPath": "http://localhost:4002/assets/bundles/runtime-6035d959d7e155a450c2.js.map"
+    },
+    "vendor-6035d959d7e155a450c2.js.map": {
+      "name": "vendor-6035d959d7e155a450c2.js.map",
+      "path": "/Users/mikhail/Projects/scada/public/web/angular-app/bundles/vendor-6035d959d7e155a450c2.js.map",
+      "publicPath": "http://localhost:4002/assets/bundles/vendor-6035d959d7e155a450c2.js.map"
+    }
+  },
+  "chunks": {
+    "main": [
+      "runtime-6035d959d7e155a450c2.js",
+      "vendor-6035d959d7e155a450c2.js",
+      "main-6035d959d7e155a450c2.js"
+    ],
+    "polyfills": [
+      "runtime-6035d959d7e155a450c2.js",
+      "polyfills-6035d959d7e155a450c2.js"
+    ],
+    "styles": [
+      "runtime-6035d959d7e155a450c2.js",
+      "styles.css",
+      "styles-6035d959d7e155a450c2.js"
+    ]
+  },
+  "publicPath": "http://localhost:4002/assets/bundles/"
+}

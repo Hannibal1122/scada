@@ -9,5 +9,8 @@ export class Links {
     idFrom: number;
 
     @Column()
+    idType: number;
+
+    @Column()
     idTo: number;
 }

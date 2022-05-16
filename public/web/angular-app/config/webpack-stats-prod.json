@@ -1,0 +1,45 @@
+{
+  "status": "done",
+  "assets": {
+    "main-2c3c8a0ac604951401dd.js": {
+      "name": "main-2c3c8a0ac604951401dd.js",
+      "path": "/Users/mikhail/Projects/scada/public/web/angular-app/dist/main-2c3c8a0ac604951401dd.js",
+      "publicPath": "/public/web/angular-app/dist/main-2c3c8a0ac604951401dd.js"
+    },
+    "polyfills-2c3c8a0ac604951401dd.js": {
+      "name": "polyfills-2c3c8a0ac604951401dd.js",
+      "path": "/Users/mikhail/Projects/scada/public/web/angular-app/dist/polyfills-2c3c8a0ac604951401dd.js",
+      "publicPath": "/public/web/angular-app/dist/polyfills-2c3c8a0ac604951401dd.js"
+    },
+    "runtime-2c3c8a0ac604951401dd.js": {
+      "name": "runtime-2c3c8a0ac604951401dd.js",
+      "path": "/Users/mikhail/Projects/scada/public/web/angular-app/dist/runtime-2c3c8a0ac604951401dd.js",
+      "publicPath": "/public/web/angular-app/dist/runtime-2c3c8a0ac604951401dd.js"
+    },
+    "styles.31d6cfe0d16ae931b73c.css": {
+      "name": "styles.31d6cfe0d16ae931b73c.css",
+      "path": "/Users/mikhail/Projects/scada/public/web/angular-app/dist/styles.31d6cfe0d16ae931b73c.css",
+      "publicPath": "/public/web/angular-app/dist/styles.31d6cfe0d16ae931b73c.css"
+    },
+    "3rdpartylicenses.txt": {
+      "name": "3rdpartylicenses.txt",
+      "path": "/Users/mikhail/Projects/scada/public/web/angular-app/dist/3rdpartylicenses.txt",
+      "publicPath": "/public/web/angular-app/dist/3rdpartylicenses.txt"
+    }
+  },
+  "chunks": {
+    "main": [
+      "runtime-2c3c8a0ac604951401dd.js",
+      "main-2c3c8a0ac604951401dd.js"
+    ],
+    "polyfills": [
+      "runtime-2c3c8a0ac604951401dd.js",
+      "polyfills-2c3c8a0ac604951401dd.js"
+    ],
+    "styles": [
+      "runtime-2c3c8a0ac604951401dd.js",
+      "styles.31d6cfe0d16ae931b73c.css"
+    ]
+  },
+  "publicPath": "/public/web/angular-app/dist/"
+}
