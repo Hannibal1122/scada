@@ -5,11 +5,10 @@ import { CoreController } from './core.controller';
 import { CoreService } from './core.service';
 import { Links } from './entity/links.entity';
 import { Registry } from './entity/registry.entity';
-import { Scheme } from './entity/scheme.entity';
-
+import { ConfigModule, ConfigService } from '@nestjs/config';
 @Module({
     imports: [
-        TypeOrmModule.forFeature([ Links, Registry, Scheme ]),
+        TypeOrmModule.forFeature([ Links, Registry ]),
         TypeOrmModule.forRoot({
             type: 'mysql',
             host: 'hannibal.beget.tech',
@@ -17,11 +16,11 @@ import { Scheme } from './entity/scheme.entity';
             username: 'hannibal_scada',
             password: '25m@d92',
             database: 'hannibal_scada',
-            entities: [ Registry, Links, Scheme ],
+            entities: [ Registry, Links ],
             synchronize: true,
         }),
     ],
     controllers: [CoreController],
-    providers: [CoreService, WebpackLoader]
+    providers: [CoreService, ConfigService, WebpackLoader]
 })
 export class CoreModule {}

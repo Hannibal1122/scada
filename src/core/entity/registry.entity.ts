@@ -11,6 +11,6 @@ export class Registry {
     @Column({ type: 'timestamp' })
     dateCreated: number;
 
-    @Column({ default: true })
+    @Column({ default: false })
     isDeleted: boolean;
 }

@@ -57,12 +57,8 @@ export class CoreService {
     async getDataByIdType(idType: number, idTo: number): Promise<Registry[]>
     {
         let links = await this.getLinksByIdType(idType, idTo);
+        console.log(idType, idTo, links)
         return await this.registryRepository.findByIds(links.map(link => link.idFrom), /* { isDeleted: false } */)
-    }
-    async getDataByIdFrom(idFrom: number, idType: number): Promise<Registry[]>
-    {
-        let links = await this.getLinksByIdFrom(idFrom, idType);
-        return await this.registryRepository.findByIds(links.map(link => link.idTo), /* { isDeleted: false } */)
     }
     async getDataByIdTypeRecursion(idType: number, idTo: number): Promise<Registry[]>
     {
@@ -73,70 +69,88 @@ export class CoreService {
         }
         return out;
     }
-    async getDataByQuery(query: any)
+    async getDataByQuery(_query: any)
     {
-        let out = {};
-        let map = {};
-        for(let i = 0; i < query.length; i++)
-            for(let key in query[i])
-            {
-                map[key] = await this.getDataByIdTypeQuery(query[i][key], map);
-                if(query[i][key].out !== false)
-                    out[key] = map[key];
-                // console.log(key, map[key])
+        let query = [{
+            by: {
+                idType: 8, // Схему данных
+                idTo: 9, // По Отделу АСУЭ
+                as: "children",
+                /* where: {
+                    10: {
+                        as: "header",
+                        by: {
+                            idType: 14,
+                            idTo: "$parent",
+                            as: "data"
+                        },
+                        compare: [{
+                            idType: 14,
+                            idTo: "$parent",
+                            as: "data"
+                        }]
+                    }
+                } */
+            },
+            compare: {
+                idType: 12,
+                idTo: 13,
             }
+        }];
+        let out = [];
+        for(let i = 0; i < query.length; i++)
+        {
+            let by = query[i].by;
+            if(by)
+            {
+                let main = await this.getOneData(by.idTo);
+                main[by.as] = [
+                    ...await this.getDataByIdTypeTree(by.idType, by.idTo, by)
+                ];
+                out.push(main);
+            }
+            let compare = query[i].compare;
+            if(compare)
+            {
+                console.log("[compare]")
+                let main = await this.getDataByIdType(compare.idType, compare.idTo);
+                out.push(main);
+            }
+        }
         return out;
     }
-    private async getDataByIdTypeQuery({ idType, idTo, compare }, map)
+    async getDataByIdTypeTree(idType, idTo, query: {
+        idType: number
+        idTo: number
+        as: string
+        where?: any
+    }): Promise<Registry[]>
     {
-        if(compare)
+        let out: any = await this.getDataByIdType(idType, idTo);
+        for(let i = 0; i < out.length; i++)
         {
-            let from = map[compare.from];
-            let fromMap = {};
-            let byFrom = compare.byFrom;
-            let byTo = compare.byTo;
-            let to = map[compare.to];
-
-            from.forEach((item, i) => fromMap[item.id] = i);
-            let out = [];
-            for(let i = 0; i < to.length; i++)
+            let id = out[i].id;
+            let name = query.as;
+            let subBy;
+            if(query.where && query.where[id])
             {
-                let row = await this.getDataByIdType(byTo, to[i].id);
-                out[i] = [];
-                for(let j = 0; j < row.length; j++)
+                name = query.where[id].as;
+                subBy = query.where[id].by
+            }
+            out[i][name] = await this.getDataByIdTypeTree(idType, id, query);
+            if(subBy)
+            {
+                for(let j = 0; j < out[i][name].length; j++)
                 {
-                    let column = await this.getDataByIdFrom(row[j].id, byFrom);
-                    out[i][fromMap[column[0].id]] = row[j];
+                    let element = out[i][name][j];
+                    element[subBy.as] = await this.getDataByIdTypeTree(subBy.idType, subBy.idTo === "$parent" ? element.id : subBy.idTo, subBy);
                 }
             }
-            return out;
         }
-        if(typeof idType === "string")
-            idType = map[idType].map(item => item.id);
-        if(typeof idTo === "string")
-            idTo = map[idTo].map(item => item.id);
-        
-        let out = [];
-        if(Array.isArray(idTo))
-        {
-            for(let i = 0; i < idTo.length; i++)
-            {
-                out.push(
-                    await this.getDataByIdType(idType, idTo[i])
-                );
-            }
-            if(out.length == 1) out = out[0];
-        }
-        else out = await this.getDataByIdType(idType, idTo);
         return out;
     }
-    
     async getLinksByIdType(idType: number, idTo: number): Promise<Links[]>
     {
         return await this.linksRepository.find({ idType, idTo });
-    }
-    async getLinksByIdFrom(idFrom: number, idType: number): Promise<Links[]>
-    {
-        return await this.linksRepository.find({ idFrom, idType });
     }
 }

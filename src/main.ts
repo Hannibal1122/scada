@@ -8,9 +8,9 @@ import * as cookieParser from 'cookie-parser';
 async function bootstrap() {
     const app = await NestFactory.create<NestExpressApplication>(AppModule);
 
+    app.enableCors();
     app.useStaticAssets(join(__dirname, '..', 'public'), { prefix: "/public/" });
     app.setBaseViewsDir(join(__dirname, '..', 'views'));
-    console.log(join(__dirname, '..', 'views'))
     app.setViewEngine('hbs');
     app.use(cookieParser());
     hbs.registerPartials(join(__dirname, '..', 'views/partials'));

@@ -5,6 +5,5 @@ export class AppController {
     @Get()
     @Render('index')
     root() {
-        return { message: "TEST" }
     }
 }

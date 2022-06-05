@@ -30,9 +30,9 @@ export class ReadFile {
         })
         return promise;
     }
-    readFileJSON()
+    readFileJSON<T>(): Promise<T>
     {
-        let promise = new Promise((resolve, reject) => {
+        let promise = new Promise<T>((resolve, reject) => {
             fs.readFile(this.path, 'utf8', function readFileCallback(err, data){
                 if(err) reject();
                 else resolve(JSON.parse(data));

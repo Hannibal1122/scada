@@ -2,9 +2,11 @@
 <html lang="ru">
     <head>
         {{> head }}
+        <base href="{{{ baseHref }}}"/>
+        {{{ scriptsHead }}}
     </head>
     <body>
         <app-root></app-root>
-        {{{ scripts }}}
+        {{{ scriptsBody }}}
     </body>
 </html>
